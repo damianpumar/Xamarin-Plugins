@@ -1,4 +1,4 @@
-﻿using System.Net;
+using System.Net;
 using System.IO;
 using System.Text;
 using MvvmCross.Platform.Droid.Platform;
@@ -15,28 +15,18 @@ namespace UI.Droid
 {
     public class ShareImageTask : MvxAndroidTask ,IShareImageTask
     {
-        #region Members
-
         private const String shareImage = "Sharing";
 
-        private const String appName = "Name Yout Application";
+        private const String appName = "Name Your Application";
 
         private const String messageToShare = "{0} - {1} \r\n{2}";
 
         private readonly IStorageFile storageFile;
 
-        #endregion
-
-        #region Constructor
-
         public ShareImageTask(IStorageFile storageFile)
         {
             this.storageFile = storageFile;
         }
-
-        #endregion
-
-        #region Methods
 
         public void ShareImage(String urlImage, String pathToSave, String title, params String[] comments)
         {
@@ -62,9 +52,6 @@ namespace UI.Droid
 
             this.StartActivity(Intent.CreateChooser(sendIntent, shareImage));
         }
-
-        #endregion
     }
 
 }
-
