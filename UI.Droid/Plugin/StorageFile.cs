@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Core;
 using System.Net;
 using System.IO;
@@ -7,12 +7,11 @@ namespace UI.Droid
 {
     public class StorageFile : IStorageFile
     {
-        #region Methods
-
+        private const String PathYourApplication = "Path Your Application";
+        
         public String SaveFile(Byte[] file, String pathToSave, String nameFile)
         {
-            //Check directory levels, Change it!.
-            String pathDirectoryApplication = System.IO.Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, "Path Your Application");
+            String pathDirectoryApplication = System.IO.Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, PathYourApplication);
 
             String pathDirectoryImagenes = System.IO.Path.Combine(pathDirectoryApplication, pathToSave);
 
@@ -24,10 +23,8 @@ namespace UI.Droid
             if (!Directory.Exists(pathDirectoryImagenes))
                 Directory.CreateDirectory(pathDirectoryImagenes);
 
-            if (File.Exists(pathFile))
-                return pathFile;
-
-            File.WriteAllBytes(pathFile, file);
+            if (!File.Exists(pathFile))
+                File.WriteAllBytes(pathFile, file);
 
             return pathFile;
         }
@@ -39,7 +36,5 @@ namespace UI.Droid
                 return webClient.DownloadData(urlFile);
             }
         }
-
-        #endregion
     }
 }
