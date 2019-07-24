@@ -7,11 +7,11 @@ namespace UI.Droid
 {
     public class StorageFile : IStorageFile
     {
-        private const String PathYourApplication = "Path Your Application";
+        private const String appName = "Path Your Application";
         
         public String SaveFile(Byte[] file, String pathToSave, String nameFile)
         {
-            String pathDirectoryApplication = System.IO.Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, PathYourApplication);
+            String pathDirectoryApplication = System.IO.Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, appName);
 
             String pathDirectoryImagenes = System.IO.Path.Combine(pathDirectoryApplication, pathToSave);
 
